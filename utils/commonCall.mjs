@@ -26,7 +26,6 @@ const htApiCallJs = async ({
         ? { ...params, appkey, appsecret, httpsAgent: agent }
         : { ...params, httpsAgent: agent }
       : {};
-
   const realHeaders = headerKeyFlag
     ? { ...headers, appkey, appsecret }
     : { ...headers };
@@ -36,8 +35,8 @@ const htApiCallJs = async ({
     maxBodyLength: Infinity,
     url: requestUrl,
     headers: realHeaders,
-    data: JSON.stringify(realParams),
   };
+  if (method === "POST") config[data] = JSON.stringify(realParams);
   //console.log(config);
 
   return await axios
@@ -48,7 +47,7 @@ const htApiCallJs = async ({
       if (typeof callback === "function") {
         callback(response);
       }
-
+      console.log(response);
       return response.data;
     })
     .catch((error) => {
