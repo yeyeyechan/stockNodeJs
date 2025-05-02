@@ -5,7 +5,7 @@ import oauth from "./router/oauth.mjs";
 import cors from "cors";
 import { scheduleJob } from "node-schedule";
 import rankingScheduler from "./sheduler/rankingScheduler.mjs";
-
+import tradingScheduler from "./sheduler/tradingScheduler.mjs";
 const app = express();
 const port = 3000;
 app.use(bodyParser.json());
@@ -19,4 +19,5 @@ app.use("/oauth2", oauth());
 app.listen(port, () => {
   console.log(`서버가 http://localhost:${port}에서 실행 중입니다.`);
   rankingScheduler();
+  tradingScheduler();
 });
