@@ -14,6 +14,8 @@ const rankingScheduler = () => {
     //const result = await testRanking();
     console.log("scheduleJob fluctuation");
     const result = await fluctuation();
+    console.log("fluctuation result");
+    console.log(result);
     if (result.rt_cd === "1") return;
     for (const data of result.output) {
       console.log(data["hts_kor_isnm"], data["data_rank"], data["prdy_vrss"]);
@@ -23,13 +25,7 @@ const rankingScheduler = () => {
     const disparityData = await disparity();
     if (disparityData.rt_cd === "1") return;
     for (const data of disparityData.output) {
-      console.log(
-        data["hts_kor_isnm"],
-        data["d5_dsrt"],
-        data["d10_dsrt"],
-        data["d20_dsrt"],
-        data["d120_dsrt"]
-      );
+      console.log(data);
     }
     //console.log("scheduleJob offTimeBalanceData");
     /* console.log("volume Power");

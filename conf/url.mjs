@@ -16,6 +16,12 @@ const url = () => {
       inquireAccountBalance:
         "/uapi/domestic-stock/v1/trading/inquire-account-balance",
     },
+    quotation: {
+      captureUpLowPrice:
+        "/uapi/domestic-stock/v1/quotations/capture-uplowprice",
+      inquireAccountBalance:
+        "/uapi/domestic-stock/v1/trading/inquire-account-balance",
+    },
   };
 };
 export default url;
