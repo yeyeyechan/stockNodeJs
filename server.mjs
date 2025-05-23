@@ -15,11 +15,11 @@ app.use(cors());
 app.get("/v1/getReal", (req, res) => {
   res.send("안녕하세요, 세계!");
 });
-app.use("/ranking", ranking());
+app.use("/api/ranking", ranking());
 app.use("/oauth2", oauth());
 app.listen(port, () => {
   console.log(`서버가 http://localhost:${port}에서 실행 중입니다.`);
-  rankingScheduler();
+  //rankingScheduler();
   // tradingScheduler();
   //quotationScheduler();
 });
