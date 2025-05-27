@@ -72,29 +72,30 @@ export const volumePower = async () => {
   });
   return volumePowerData;
 };
-export const fluctuation = async () => {
+export const fluctuation = async (param = {}) => {
   const authorization = await getAccessToken();
   console.log("fluctuation authorization");
   console.log(authorization);
 
+  const params = param || {
+    fid_rsfl_rate2: "",
+    fid_cond_mrkt_div_code: "J",
+    fid_cond_scr_div_code: "20170",
+    fid_input_iscd: "0000",
+    fid_rank_sort_cls_code: "0",
+    fid_input_cnt_1: "0",
+    fid_prc_cls_code: "1",
+    fid_input_price_1: "",
+    fid_input_price_2: "",
+    fid_vol_cnt: "",
+    fid_trgt_cls_code: "0",
+    fid_trgt_exls_cls_code: "0",
+    fid_div_cls_code: "0",
+    fid_rsfl_rate1: "",
+  };
   const fluctuationData = await htApiCallJs({
     method: "GET",
-    params: {
-      fid_rsfl_rate2: "",
-      fid_cond_mrkt_div_code: "J",
-      fid_cond_scr_div_code: "20170",
-      fid_input_iscd: "0000",
-      fid_rank_sort_cls_code: "0",
-      fid_input_cnt_1: "0",
-      fid_prc_cls_code: "1",
-      fid_input_price_1: "",
-      fid_input_price_2: "",
-      fid_vol_cnt: "",
-      fid_trgt_cls_code: "0",
-      fid_trgt_exls_cls_code: "0",
-      fid_div_cls_code: "0",
-      fid_rsfl_rate1: "",
-    },
+    params: params,
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
       authorization: `Bearer ${authorization}`,

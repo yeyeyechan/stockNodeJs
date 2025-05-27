@@ -6,12 +6,18 @@ const ranking = () => {
   const router = express.Router();
 
   router.post("/fluctuation", async (req, res) => {
+    const param = req.body;
+    console.log(
+      "req body ",
+
+      param
+    );
     const authorization = await getAccessToken();
     console.log("fluctuation authorization");
     console.log(authorization);
 
     console.log("api call fluctuation");
-    const result = await fluctuation();
+    const result = await fluctuation(param);
     console.log("fluctuation result");
     console.log(result);
     if (result.rt_cd === "1") return;
